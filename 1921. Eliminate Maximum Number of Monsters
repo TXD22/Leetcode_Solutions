@@ -1,0 +1,15 @@
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+
+        min_reach =[]
+        for d, s in zip(dist, speed):
+            minute=math.ceil(d/s)
+            min_reach.append(minute)
+
+        min_reach.sort()
+        res = 0
+        for minute in range(len(min_reach)):
+            if minute >= min_reach[minute]:
+                return res
+            res += 1
+        return res
